@@ -8,6 +8,9 @@ const app = express();
 // connect to database
 connectDB();
 
+// Load env vars
+dotenv.config({ path: './config/config.env' });
+
 // Init middleware
 app.use(express.json({ extended: false }));
 
