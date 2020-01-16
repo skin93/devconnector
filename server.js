@@ -3,10 +3,13 @@ const colors = require('colors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
+const app = express();
+
 // connect to database
 connectDB();
 
-const app = express();
+// Init middleware
+app.use(express.json({ extended: false }));
 
 app.get('/', (req, res) => {
   res.send('API running');
