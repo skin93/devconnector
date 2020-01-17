@@ -25,11 +25,11 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     } else {
       register({ name, email, password });
     }
-
-    if (isAuthenticated) {
-      return <Redirect to='/dashboard' />;
-    }
   };
+
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />;
+  }
 
   return (
     <Fragment>
