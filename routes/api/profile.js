@@ -101,7 +101,7 @@ router.post(
 );
 
 // @route   GET api/profile
-// @desc    Create all profiles
+// @desc    Get all profiles
 // @access  Public
 router.get('/', async (req, res) => {
   try {
