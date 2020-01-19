@@ -10,8 +10,9 @@ const User = require('../../models/User');
 // @route   GET api/profile/me
 // @desc    Get current users profile
 // @access  Private
-router.get('/me', protect, async (req, res) => {
+router.get('/me', protect, async (req, res, next) => {
   try {
+    let id = req.user.id;
     const profile = await Profile.findOne({
       user: req.user.id
     }).populate('user', ['name', 'avatar']);
@@ -84,23 +85,13 @@ router.post(
     if (instagram) profileFields.social.instagram = instagram;
 
     try {
-      let profile = await Profile.findOne({ user: req.user.id });
+      let profile = await Profile.findOneAndUpdate(
+        { user: req.user.id },
+        { $set: profileFields },
+        { new: true, upsert: true }
+      );
 
-      if (profile) {
-        //  update
-        profile = await Profile.findByIdAndUpdate(
-          { user: req.user.id },
-          { $set: profileFields },
-          { new: true }
-        );
-
-        return res.json(profile);
-      }
-
-      // create
-      profile = new Profile(profileFields);
-      await profile.save();
-      res.json(profile);
+      return res.json(profile);
     } catch (error) {
       console.error(error.message);
       res.status(500).send('Server Error');
