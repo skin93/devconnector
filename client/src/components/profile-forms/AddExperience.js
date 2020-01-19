@@ -6,8 +6,8 @@ import { addExperience } from '../../actions/profile';
 
 const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
-    company: '',
     title: '',
+    company: '',
     location: '',
     from: '',
     to: '',
@@ -17,7 +17,7 @@ const AddExperience = ({ addExperience, history }) => {
 
   const [toDateDisabled, toggleDisabled] = useState(false);
 
-  const { company, title, location, from, to, current, description } = formData;
+  const { title, company, location, from, to, current, description } = formData;
 
   const handleChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
