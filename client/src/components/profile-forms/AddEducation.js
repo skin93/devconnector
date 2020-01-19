@@ -50,7 +50,6 @@ const AddEducation = ({ addEducation, history }) => {
             name='school'
             value={school}
             onChange={e => handleChange(e)}
-            required
           />
         </div>
         <div className='form-group'>
@@ -60,13 +59,12 @@ const AddEducation = ({ addEducation, history }) => {
             name='degree'
             value={degree}
             onChange={e => handleChange(e)}
-            required
           />
         </div>
         <div className='form-group'>
           <input
             type='text'
-            placeholder='Field of Study'
+            placeholder='* Field of Study'
             name='fieldofstudy'
             value={fieldofstudy}
             onChange={e => handleChange(e)}

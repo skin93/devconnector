@@ -42,7 +42,6 @@ const AddExperience = ({ addExperience, history }) => {
             name='title'
             value={title}
             onChange={e => handleChange(e)}
-            required
           />
         </div>
         <div className='form-group'>
@@ -52,7 +51,6 @@ const AddExperience = ({ addExperience, history }) => {
             name='company'
             value={company}
             onChange={e => handleChange(e)}
-            required
           />
         </div>
         <div className='form-group'>
