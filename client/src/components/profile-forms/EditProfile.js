@@ -44,7 +44,7 @@ const EditProfile = ({
       youtube: loading || !profile.youtube ? '' : profile.youtube,
       instagram: loading || !profile.instagram ? '' : profile.instagram
     });
-  }, [loading]);
+  }, [loading, getCurrentProfile]);
 
   const {
     company,
@@ -245,9 +245,9 @@ const EditProfile = ({
 };
 
 EditProfile.propTypes = {
-  profile: PropTypes.object.isRequired,
   createProfile: PropTypes.func.isRequired,
-  getCurrentProfile: PropTypes.func.isRequired
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
