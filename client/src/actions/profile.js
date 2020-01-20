@@ -16,11 +16,13 @@ export const getCurrentProfile = () => async dispatch => {
     const res = await axios.get('/api/profile/me');
     dispatch({ type: GET_PROFILE, payload: res.data });
   } catch (err) {
-    dispatch({ type: CLEAR_PROFILE });
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
+    if (err.response) {
+      dispatch({ type: CLEAR_PROFILE });
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
   }
 };
 
@@ -36,10 +38,12 @@ export const getProfiles = () => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
+    if (err.response) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
   }
 };
 
@@ -49,10 +53,12 @@ export const getProfileById = userId => async dispatch => {
     const res = await axios.get(`/api/profile/user/${userId}`);
     dispatch({ type: GET_PROFILE, payload: res.data });
   } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
+    if (err.response) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
   }
 };
 
@@ -62,10 +68,12 @@ export const getGithubRepos = username => async dispatch => {
     const res = await axios.get(`/api/profile/github/${username}`);
     dispatch({ type: GET_REPOS, payload: res.data });
   } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
+    if (err.response) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
   }
 };
 
@@ -159,10 +167,12 @@ export const deleteExperience = id => async dispatch => {
     });
     dispatch(setAlert('Experience removed', 'success'));
   } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
+    if (err.response) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
   }
 };
 
@@ -176,10 +186,12 @@ export const deleteEducation = id => async dispatch => {
     });
     dispatch(setAlert('Education removed', 'success'));
   } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
+    if (err.response) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
   }
 };
 
@@ -198,10 +210,12 @@ export const deleteAccount = () => async dispatch => {
         setAlert('Your account has been permanently deleted', 'success')
       );
     } catch (err) {
-      dispatch({
-        type: PROFILE_ERROR,
-        payload: { msg: err.response.statusText, status: err.response.status }
-      });
+      if (err.response) {
+        dispatch({
+          type: PROFILE_ERROR,
+          payload: { msg: err.response.statusText, status: err.response.status }
+        });
+      }
     }
   }
 };

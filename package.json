@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
+    "sass": "node-sass -w client/src/scss/ -o client/src/css --recursive",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
@@ -30,6 +31,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.7",
     "morgan": "^1.9.1",
+    "node-sass": "^4.13.1",
     "request": "^2.88.0"
   },
   "devDependencies": {
