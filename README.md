@@ -1,5 +1,5 @@
-# devconnector
-Social network for developers (MERN stack application). App deployed on Heroku.
+# DevConnector
+Social network for developers (MERN stack application). App deployed to Heroku.
 
 ## Built with
 ```
